@@ -1,0 +1,42 @@
+{
+	"name": "proclass",
+	"version": "v0.0.1",
+	"description": "Classical inheritance with protected members.",
+	"keywords": [
+		"protected",
+		"classical",
+		"class",
+		"inheritance"
+	],
+	"bugs": "http://github.com/bfrohs/Proclass/issues",
+	"licenses": [
+		{
+			"type": "The MIT License (MIT)",
+			"url": "http://github.com/bfrohs/Proclass/blob/master/LICENSE"
+		}
+	],
+	"author": {
+		"name": "Brandon Frohs",
+		"email": "bfrohs@gmail.com",
+		"url": "https://twitter.com/bfrohs"
+	},
+	"main": "./lib/Proclass.js",
+	"directories": {
+		"lib": "./lib"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/bfrohs/Proclass.git"
+	},
+	"scripts": {
+		"test": "mocha test/*"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"mocha": "*"
+	},
+	"engines": {
+		"node": ">=0.8.0"
+	}
+}
