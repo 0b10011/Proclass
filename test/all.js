@@ -123,6 +123,29 @@ describe("Proclass", function() {
 
 	});
 
+	it("should keep references to parent functions", function(done) {
+
+		var A = Proclass.extend({
+			_foo: "bar",
+			getFoo: function() {
+				return this._foo;
+			}
+		});
+
+		var B = A.extend({
+			baz: function() {
+				return "hello world";
+			}
+		});
+
+		var b = new B();
+
+		assert.strictEqual(b.getFoo(), "bar");
+
+		done();
+
+	});
+
 	it("should allow for protected variables to be changed internally", function(done) {
 
 		var A = Proclass.extend({
