@@ -197,6 +197,32 @@ describe("Proclass", function() {
 
 	});
 
+	it("should share most up-to-date protected scope with all methods", function(done) {
+
+		var A = Proclass.extend({
+			_foobar: "c",
+			bar: function(baz) {
+				this._foobar += " " + baz + " a";
+				return this._foobar;
+			}
+		});
+
+		var B = A.extend({
+			foo: function(baz) {
+				this.bar(baz);
+				this._foobar += " " + baz + " b";
+				return this._foobar;
+			}
+		});
+
+		var a = new B();
+
+		assert.strictEqual(a.foo("d"), "c d a d b");
+
+		done();
+
+	});
+
 	it("should not allow parents to access children's methods", function(done) {
 
 		var A = Proclass.extend({
