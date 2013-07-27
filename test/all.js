@@ -36,6 +36,55 @@ describe("Proclass", function() {
 
 	});
 
+	it("should allow for functions to be overwritten", function(done) {
+
+		var foo = 0;
+
+		var A = Proclass.extend({
+			_init: function(bar) {
+				foo = bar + 1;
+			}
+		});
+
+		var B = A.extend({
+			_init: function(bar) {
+				foo = bar + 2;
+			}
+		});
+
+		var a = new B(3);
+
+		assert.strictEqual(foo, 5);
+
+		done();
+
+	});
+
+	it("should allow for overwritten functions to still be called", function(done) {
+
+		var foo = "";
+
+		var A = Proclass.extend({
+			_init: function(bar) {
+				foo += bar + "a";
+			}
+		});
+
+		var B = A.extend({
+			_init: function(bar) {
+				this._parent(bar);
+				foo += bar + "b";
+			}
+		});
+
+		var a = new B("c");
+
+		assert.strictEqual(foo, "cacb");
+
+		done();
+
+	});
+
 	it("should allow for public variables to be changed", function(done) {
 
 		var A = Proclass.extend({
@@ -138,6 +187,29 @@ describe("Proclass", function() {
 		var a = new A();
 
 		assert.strictEqual(a.bar, undefined, "`a.bar` is accessing child's value");
+
+		done();
+
+	});
+
+	it("should not share protected data between instances", function(done) {
+
+		var A = Proclass.extend({
+			_foo: true,
+			getFoo: function() {
+				return this._foo;
+			},
+			setFoo: function(newValue) {
+				this._foo = newValue;
+			}
+		});
+
+		var a = new A();
+
+		var b = new A();
+		b.setFoo(false);
+
+		assert.strictEqual(a.getFoo(), true);
 
 		done();
 
