@@ -334,4 +334,18 @@ describe("Proclass", function() {
 
 	});
 
+	it("should throw an error when attempting to change class after initialization", function(done) {
+
+		var A = Proclass.extend({
+			foo: {}
+		});
+
+		var a = new A();
+
+		assert.throws(function() {a.bar = "baz";}, Error);
+
+		done();
+
+	});
+
 });

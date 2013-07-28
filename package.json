@@ -1,6 +1,6 @@
 {
 	"name": "proclass",
-	"version": "v0.0.6",
+	"version": "v0.0.7",
 	"description": "Classical inheritance with protected members.",
 	"keywords": [
 		"protected",
@@ -29,12 +29,14 @@
 		"url": "git://github.com/bfrohs/Proclass.git"
 	},
 	"scripts": {
-		"test": "mocha test/*"
+		"start": "node --use_strict lib/Proclass",
+		"test": "mocha -r use-strict test/*"
 	},
 	"dependencies": {
 	},
 	"devDependencies": {
-		"mocha": "*"
+		"mocha": "*",
+		"use-strict": "*"
 	},
 	"engines": {
 		"node": ">=0.8.0"
