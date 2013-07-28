@@ -294,4 +294,44 @@ describe("Proclass", function() {
 
 	});
 
+	it("should not share arrays between instances", function(done) {
+
+		var A = Proclass.extend({
+			foo: []
+		});
+
+		var a = new A();
+
+		var b = new A();
+
+		a.foo.push("foo");
+
+		assert.deepEqual(a.foo, ["foo"]);
+
+		assert.deepEqual(b.foo, []);
+
+		done();
+
+	});
+
+	it("should not share objects between instances", function(done) {
+
+		var A = Proclass.extend({
+			foo: {}
+		});
+
+		var a = new A();
+
+		var b = new A();
+
+		a.foo.bar = "baz";
+
+		assert.deepEqual(a.foo, {bar: "baz"});
+
+		assert.deepEqual(b.foo, {});
+
+		done();
+
+	});
+
 });
