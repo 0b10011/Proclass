@@ -85,6 +85,36 @@ describe("Proclass", function() {
 
 	});
 
+	it("should allow for overwritten protected functions to still be called", function(done) {
+
+		var foo = "c";
+
+		var A = Proclass.extend({
+			_foo: function(baz) {
+				foo += " " + baz + " a";
+			},
+			bar: function(baz) {
+				this._foo(baz);
+			}
+		});
+
+		var B = A.extend({
+			_foo: function(baz) {
+				this._parent(baz);
+				foo += " " + baz + " b";
+			}
+		});
+
+		var a = new B();
+
+		a.bar("d");
+
+		assert.strictEqual(foo, "c d a d b");
+
+		done();
+
+	});
+
 	it("should allow for public variables to be changed", function(done) {
 
 		var A = Proclass.extend({
