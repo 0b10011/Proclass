@@ -31,7 +31,7 @@ Include Proclass in your application ([available on npm](https://npmjs.org/packa
 
 	var Bar = Foo.extend({
 
-		anotherPublicFunction: function() {
+		somePublicFunction: function() {
 			// Will overwrite `Foo.somePublicFunction()`
 			// `Foo.somePublicFunction()` still accessible via `this._parent()`
 		}
