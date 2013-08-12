@@ -348,4 +348,61 @@ describe("Proclass", function() {
 
 	});
 
+	it("should handle nested _parent() calls", function(done) {
+
+		var A = Proclass.extend({
+			foo: function(){
+				return "a";
+			}
+		});
+
+		var B = A.extend({
+			foo: function(){
+				return this._parent() + "b";
+			}
+		});
+
+		var C = B.extend({
+			foo: function(){
+				return this._parent() + "c";
+			}
+		});
+
+		var c = new C();
+		assert.doesNotThrow(c.foo);
+
+		assert.strictEqual(c.foo(), "abc");
+
+		done();
+
+	});
+
+	it("should not share _parents array between classes", function(done) {
+
+		var A = Proclass.extend({
+			foo: function(){
+				return "a";
+			}
+		});
+
+		var B = A.extend({
+			foo: function(){
+				return this._parent() + "b";
+			}
+		});
+
+		var C = B.extend({
+			foo: function(){
+				return this._parent() + "c";
+			}
+		});
+
+		var b = new B();
+
+		assert.strictEqual(b.foo(), "ab");
+
+		done();
+
+	});
+
 });
