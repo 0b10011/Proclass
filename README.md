@@ -42,10 +42,6 @@ Include Proclass in your application using **strict mode** ([available on npm](h
 
 	var bar = new Bar(baz);
 
-# Why another "Class" script?
-
-Other "Class" scripts I tried didn't have all of the functionality I needed. Specifically, I was looking for the ability to have `protected` variables, or variables that can be inherited, but aren't publicly visible. Additionally, I wanted to be able to overwrite functions that were inherited from a parent class, but still be able to call them from within the new function (e.g., to add functionality without having to duplicate code). And I wanted constructors that could accept arguments.
-
 # Thanks
 
 [John Resig's Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) was a huge inspiration to this project. After trying several different approaches, I kept coming back to using a method very similar to his. (And I learned quite a bit because of it.) So, thanks!
