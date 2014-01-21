@@ -29,14 +29,12 @@
 		"url": "git://github.com/bfrohs/Proclass.git"
 	},
 	"scripts": {
-		"start": "node --use_strict lib/Proclass",
-		"test": "mocha -r use-strict test/*"
+		"test": "mocha test/*"
 	},
 	"dependencies": {
 	},
 	"devDependencies": {
-		"mocha": "*",
-		"use-strict": "*"
+		"mocha": "*"
 	},
 	"engines": {
 		"node": ">=0.8.0"

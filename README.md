@@ -4,9 +4,11 @@ Basic classical inheritance with protected members and accessible overwritten me
 
 # Usage
 
-Include Proclass in your application ([available on npm](https://npmjs.org/package/proclass)) and let the inheritance begin!
+Include Proclass in your application using **strict mode** ([available on npm](https://npmjs.org/package/proclass)) and let the inheritance begin!
 
 ## Example
+
+	"use strict";
 
 	var Proclass = require("proclass");
 
